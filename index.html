@@ -95,6 +95,15 @@
   <div class="container list">
     <form id="myForm" class="needs-validation my-4" novalidate>
       <div class="row justify-content-start g-3">
+
+       <div class="col-12">
+          <label for="name">ทะเบียนผู้ใช้น้ำ<span style="color: #f90202">*</span></label>
+          <input type="text" id="waterAccount" name="waterAccount" class="form-control" placeholder="กรอกทะเบียนผู้ใช้น้ำ" pattern="[0-9]{8}" required>
+          <div class="invalid-feedback">
+            กรอกทะเบียนผู้ใช้น้ำ 8 หลัก
+          </div>
+        </div>
+        
         <div class="col-12">
           <label for="name">ชื่อ-สกุล<span style="color: #f90202">*</span></label>
           <input type="text" id="name" name="name" class="form-control" placeholder="กรอกชื่อและนามสกุล" required>
@@ -102,6 +111,7 @@
             กรอกชื่อและนามสกุล
           </div>
         </div>
+        
         <div class="col-12">
           <label for="phone">เบอร์โทร</label>
           <input type="text" id="phone" name="phone" maxlength="10" class="form-control" placeholder="กรุณากรอกเบอร์โทร"
@@ -110,6 +120,7 @@
             กรุณากรอกเบอร์โทร
           </div>
         </div>
+        
         <div class="col-12">
           <label for="device">กำหนดชื่อเข้าใช้งาน (Username)</label>
           <input type="text" id="device" name="device" class="form-control" placeholder="กรุณากรอก Username" required>
@@ -117,6 +128,7 @@
             กรุณาตั้ง Username ด้วยครับ
           </div>
         </div>
+        
         <div class="col-12">
           <label for="problem">รหัสผ่าน (Password)</label>
           <input type="text" id="problem" name="problem" class="form-control"

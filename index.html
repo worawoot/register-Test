@@ -98,7 +98,7 @@
 
        <div class="col-12">
           <label for="name">ทะเบียนผู้ใช้น้ำ<span style="color: #f90202">*</span></label>
-          <input type="text" id="waterAccount" name="waterAccount" class="form-control" placeholder="กรอกทะเบียนผู้ใช้น้ำ" pattern="[0-9]{8}" required>
+          <input type="text" id="waterAccount" name="waterAccount" class="form-control" placeholder="กรอกทะเบียนผู้ใช้น้ำ 8 หลัก" pattern="[0-9]{8}" required>
           <div class="invalid-feedback">
             กรอกทะเบียนผู้ใช้น้ำ 8 หลัก
           </div>
@@ -113,11 +113,11 @@
         </div>
         
         <div class="col-12">
-          <label for="phone">เบอร์โทร</label>
-          <input type="text" id="phone" name="phone" maxlength="10" class="form-control" placeholder="กรุณากรอกเบอร์โทร"
+          <label for="phone">เบอร์โทรศัพท์ (10 หลัก)<span style="color: #f90202">*</span></label>
+          <input type="text" id="phone" name="phone" maxlength="10" class="form-control" placeholder="เช่น 0812345678" pattern="0[0-9]{9}"
             required>
           <div class="invalid-feedback">
-            กรุณากรอกเบอร์โทร
+            กรอกเบอร์โทรศัพท์ 10 หลัก (ขึ้นต้นด้วย 0)
           </div>
         </div>
         

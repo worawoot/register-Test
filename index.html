@@ -16,7 +16,7 @@
 
   <!-- 3. โหลด SweetAlert2 -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  
+
   <style>
     /* 4. ตั้งค่า Font หลักให้เป็น IBM Plex Sans Thai */
     body {
@@ -26,7 +26,6 @@
     /* Custom style สำหรับ Checkbox ที่ดูดีขึ้น */
     .form-checkbox:checked {
       background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
-      border-color: transparent;
     }
   </style>
 </head>
@@ -34,47 +33,32 @@
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
 
   <div class="w-full max-w-lg bg-white rounded-lg shadow-xl p-6 md:p-10">
-    
+
     <!-- Header -->
     <div class="text-center mb-8">
       <h1 class="text-2xl md:text-3xl font-bold text-blue-700">
         ระบบลงทะเบียน MWA e-Bill
       </h1>
-      <p class="text-gray-600 mt-2">
-        กรุณากรอกข้อมูลให้ครบถ้วนเพื่อรับเอกสารอิเล็กทรอนิกส์
-      </p>
-      
-      <!-- สถานะการเชื่อมต่อ LIFF -->
-      <div id="liffStatus" class="mt-4 text-sm text-yellow-600">
-        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-yellow-600 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-        กำลังเชื่อมต่อ Line...
-      </div>
     </div>
 
-    <!-- Form: ซ่อนไว้ก่อนจนกว่า LIFF จะดึง User ID ได้ -->
-    <form id="registrationForm" class="hidden">
-      
-      <!-- Hidden input for Line User ID (จะถูกเติมค่าจาก LIFF) -->
-      <input type="hidden" id="lineUserId" name="lineUserId" value="">
-      
+    <!-- Form -->
+    <form id="registrationForm">
+
       <!-- 1. ทะเบียนผู้ใช้น้ำ -->
       <div class="mb-4">
         <label for="waterAccount" class="block text-sm font-semibold text-gray-700 mb-2">
-          ทะเบียนผู้ใช้น้ำ
+          ทะเบียนผู้ใช้น้ำ <span style="color: #f90202">*</span>
         </label>
         <input type="text" id="waterAccount" name="waterAccount"
                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-               placeholder="กรอกทะเบียนผู้ใช้น้ำ (ตัวอย่าง 8 หลัก)" pattern="[0-9]{8,}"
-               title="กรอกทะเบียนผู้ใช้น้ำ (ตัวเลขเท่านั้น)" required>
+               placeholder="กรอกทะเบียนผู้ใช้น้ำ" pattern="[0-9]{8}"
+               title="กรอกทะเบียนผู้ใช้น้ำ 8 หลัก "required>
       </div>
 
       <!-- 2. ชื่อ-นามสกุล -->
       <div class="mb-4">
         <label for="fullName" class="block text-sm font-semibold text-gray-700 mb-2">
-          ชื่อ-นามสกุล
+          ชื่อ-นามสกุล <span style="color: #f90202">*</span>
         </label>
         <input type="text" id="fullName" name="fullName"
                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -84,7 +68,7 @@
       <!-- 3. เบอร์โทรศัพท์ -->
       <div class="mb-4">
         <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">
-          เบอร์โทรศัพท์ (10 หลัก)
+          เบอร์โทรศัพท์ (10 หลัก) <span style="color: #f90202">*</span>
         </label>
         <input type="tel" id="phone" name="phone"
                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -99,19 +83,18 @@
         </label>
         <input type="email" id="email" name="email"
                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-               placeholder="example@mail.com" required>
+               placeholder="example@mail.com" >
       </div>
 
       <!-- 5. & 6. Checkboxes -->
-      <div class="mb-6 space-y-3 p-4 bg-blue-50 rounded-lg border border-blue-200">
-        <label class="block text-sm font-bold text-blue-800 mb-2">
-          ✅ เลือกบริการเอกสารอิเล็กทรอนิกส์
-          <span class="text-red-500 font-normal">* (เลือกอย่างน้อย 1 รายการ)</span>
+      <div class="mb-6 space-y-3">
+        <label class="block text-sm font-semibold text-gray-700 mb-2">
+          เลือกประเภทเอกสารที่ต้องการรับ (e-Service) <span style="color: #f90202">*</span>
         </label>
 
         <div class="flex items-center">
           <input type="checkbox" id="waterBillCheck" name="waterBillCheck"
-                 class="form-checkbox h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                 class="form-checkbox h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" checked>
           <label for="waterBillCheck" class="ml-3 text-gray-700">
             ใบแจ้งค่าน้ำประปา (e-Bill)
           </label>
@@ -119,7 +102,7 @@
 
         <div class="flex items-center">
           <input type="checkbox" id="taxInvoiceCheck" name="taxInvoiceCheck"
-                 class="form-checkbox h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                 class="form-checkbox h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500" checked>
           <label for="taxInvoiceCheck" class="ml-3 text-gray-700">
             ใบกำกับภาษี (e-Tax Invoice)
           </label>
@@ -129,11 +112,11 @@
       <!-- Submit Button -->
       <div>
         <button type="submit" id="submitButton"
-                class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg
-                       shadow-lg shadow-blue-300/50 hover:bg-blue-700 focus:outline-none 
-                       focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50
-                       transition-all duration-300">
-          ยืนยันการลงทะเบียน
+                class="w-full bg-blue-500 text-white font-bold py-3 px-4 rounded-lg
+                       hover:bg-blue-700 focus:outline-none focus:ring-2 
+                       focus:ring-blue-500 focus:ring-opacity-50
+                       transition-colors duration-200">
+          ลงทะเบียน
         </button>
       </div>
 
@@ -141,85 +124,29 @@
   </div>
 
 
-  <!-- Footer -->
-  <footer class="absolute bottom-4 left-0 right-0 text-center">
-    <p class="text-gray-500 text-sm">
-      &copy; <?= new Date().getFullYear() ?> MWA e-Service
-    </p>
-  </footer>
 
-  <!-- 4. โหลด LIFF SDK (ไว้ท้ายสุดเพื่อให้แน่ใจว่าถูกโหลดก่อนโค้ดหลัก) -->
-  <script src="https://static.line-scdn.net/liff/2.22.2/sdk.js"></script>
-  
   <script>
+    // 6. JavaScript สำหรับ Form Submit และ SweetAlert
     const form = document.getElementById('registrationForm');
-    const liffStatus = document.getElementById('liffStatus');
-    const hiddenLineIdField = document.getElementById('lineUserId');
     
-    // *** 1. CONFIG: LIFF ID ที่ระบุโดยผู้ใช้ ***
-    const CONFIG = {
-        LIFF_ID: '1657790891-40VQpd6O' 
-    };
-    // **********************************************
-
-    /**
-     * LIFF Initialization and Profile Retrieval
-     */
-    async function initLiff() {
-      try {
-        liffStatus.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-yellow-600 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> กำลังเชื่อมต่อ Line...';
-        
-        // ใช้ LIFF ID ที่กำหนด
-        await liff.init({ liffId: CONFIG.LIFF_ID });
-        
-        if (!liff.isLoggedIn()) {
-          liffStatus.innerHTML = '<span class="text-red-500">กำลังเข้าสู่ระบบ Line...</span>';
-          liff.login();
-        } else {
-          const profile = await liff.getProfile();
-          
-          hiddenLineIdField.value = profile.userId;
-
-          liffStatus.innerHTML = `<span class="text-green-600 font-semibold">เชื่อมต่อ Line สำเร็จ:</span> (User: ${profile.displayName})`;
-          form.classList.remove('hidden'); // แสดงฟอร์ม
-        }
-      } catch (err) {
-        console.error("LIFF init error:", err);
-        liffStatus.innerHTML = '<span class="text-red-600 font-bold">LIFF ERROR:</span> ไม่สามารถเชื่อมต่อ Line ได้ (ตรวจสอบ LIFF ID และการอนุญาต)';
-      }
-    }
-    
-    // เริ่มต้น LIFF เมื่อหน้าเว็บโหลดเสร็จ
-    window.onload = initLiff;
-
-
     form.addEventListener('submit', function(event) {
-      event.preventDefault(); 
+      event.preventDefault(); // ป้องกันการ Submit แบบปกติ
 
+      // --- START: NEW CHECKBOX VALIDATION ---
       // ดึงค่าการ check
       const waterBillChecked = document.getElementById('waterBillCheck').checked;
       const taxInvoiceChecked = document.getElementById('taxInvoiceCheck').checked;
-      const lineUserId = hiddenLineIdField.value;
 
-      // ตรวจสอบ Validation Checkbox
+      // ตรวจสอบว่าไม่ได้เลือกทั้งคู่
       if (!waterBillChecked && !taxInvoiceChecked) {
         Swal.fire({
           icon: 'warning',
           title: 'กรุณาเลือกเอกสาร',
           text: 'คุณต้องเลือกรับเอกสารอย่างน้อย 1 ประเภท (e-Bill หรือ e-Tax Invoice)',
         });
-        return; 
+        return; // หยุดการทำงาน ไม่ส่งฟอร์ม
       }
-      
-      // ตรวจสอบ Line User ID 
-      if (!lineUserId) {
-           Swal.fire({
-                icon: 'error',
-                title: 'ข้อผิดพลาด LIFF',
-                text: 'ไม่สามารถดึง Line User ID ได้ กรุณาลองโหลดหน้านี้อีกครั้ง',
-            });
-            return;
-      }
+      // --- END: NEW CHECKBOX VALIDATION ---
       
       // แสดง SweetAlert "กำลังโหลด"
       Swal.fire({
@@ -237,9 +164,8 @@
         fullName: document.getElementById('fullName').value,
         phone: document.getElementById('phone').value,
         email: document.getElementById('email').value,
-        waterBill: waterBillChecked,
-        taxInvoice: taxInvoiceChecked,
-        lineUserId: lineUserId // ส่ง Line User ID
+        waterBill: document.getElementById('waterBillCheck').checked,
+        taxInvoice: document.getElementById('taxInvoiceCheck').checked
       };
 
       // ส่งข้อมูลไปที่ Code.gs โดยใช้ google.script.run
@@ -254,17 +180,15 @@
      */
     function onSuccess(result) {
       if (result.success) {
+        // แสดง SweetAlert "สำเร็จ"
         Swal.fire({
           icon: 'success',
           title: 'บันทึกข้อมูลสำเร็จ!',
           text: result.message,
         });
-        form.reset(); 
-        // รีเซ็ตสถานะ LIFF เพื่อคง Line ID ไว้
-        if(liff.isLoggedIn()){
-             initLiff(); 
-        }
+        form.reset(); // ล้างค่าในฟอร์ม
       } else {
+        // แสดง SweetAlert "ผิดพลาด" (กรณี Server ส่ง error กลับมา)
         onFailure(result);
       }
     }
@@ -276,6 +200,7 @@
       Swal.fire({
         icon: 'error',
         title: 'เกิดข้อผิดพลาด',
+        // ถ้า error.message มีค่า (จาก Server) ให้ใช้ค่านั้น, ถ้าไม่มี (จาก Client) ให้ใช้ค่า default
         text: error.message || 'ไม่สามารถส่งข้อมูลได้ กรุณาลองใหม่อีกครั้ง',
       });
     }

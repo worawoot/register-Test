@@ -95,7 +95,15 @@
   <div class="container list">
     <form id="myForm" class="needs-validation my-4" novalidate>
       <div class="row justify-content-start g-3">     
-              
+
+        <div class="col-12">
+          <label for="device">กำหนดชื่อเข้าใช้งาน (Username)</label>
+          <input type="text" id="device" name="device" class="form-control" placeholder="กรุณากรอก Username" required>
+          <div class="invalid-feedback">
+            กรุณาตั้ง Username ด้วยครับ
+          </div>
+        </div>  
+        
         <div class="col-12">
           <label for="name">ชื่อ-สกุล</label>
           <input type="text" id="name" name="name" class="form-control" placeholder="ชื่อ-สกุล" required>
@@ -112,15 +120,7 @@
             กรุณากรอกเบอร์โทร
           </div>
         </div>   
-
-         <div class="col-12">
-          <label for="device">กำหนดชื่อเข้าใช้งาน (Username)</label>
-          <input type="text" id="device" name="device" class="form-control" placeholder="กรุณากรอก Username" required>
-          <div class="invalid-feedback">
-            กรุณาตั้ง Username ด้วยครับ
-          </div>
-        </div>  
-
+         
         <div class="col-12">
           <label for="problem">รหัสผ่าน (Password)</label>
           <input type="text" id="problem" name="problem" class="form-control"

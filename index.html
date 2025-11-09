@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ลงทะเบียน MWA e-Bill</title>
+  <title>LIFF to SHEET</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
     integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -75,20 +75,19 @@
     button[type="submit"]:hover {
       background: #FFCE00;
       color: #000;
-    }    
-    
+    }
   </style>
 </head>
 
 <body>
   <center>
     <br />
-    <img src="https://firebasestorage.googleapis.com/v0/b/webapp-c8c38.appspot.com/o/th-full-white.png?alt=media&token=88a41cdb-27fd-4c98-8d11-a390ef103163"
-      style="width:100px; height:auto; padding-bottom: 10px; ">
+    <img src="https://sv1.picz.in.th/images/2023/03/24/mWNBPW.gif"
+      style="width:200px; height:auto; padding-bottom: 10px; ">
     <div class="form-group mb-2">
       <label for="searchtext">
-        <h3>ระบบลงทะเบียน MWA e-Bill</h3>
-        <h5 class="text-center text-danger">สำนักงานการประปาสาขาลาดพร้าว</h5>
+        <h3>ระบบสมัครสมาชิก</h3>
+        <h5 class="text-center text-danger">สื่อ และนวัตกรรมครูสิทธิชาติ สิทธิ</h5>
       </label>
     </div>
   </center>
@@ -96,43 +95,56 @@
   <div class="container list">
     <form id="myForm" class="needs-validation my-4" novalidate>
       <div class="row justify-content-start g-3">
-
-       <div class="col-12">
-          <label for="waterAccount">ทะเบียนผู้ใช้น้ำ<span style="color: #f90202">*</span></label>
-          <input type="text" id="waterAccount" name="waterAccount" class="form-control" placeholder="กรอกทะเบียนผู้ใช้น้ำ 8 หลัก" pattern="[0-9]{8}" required>
+        <div class="col-12">
+          <label for="name">ชื่อ-สกุล</label>
+          <input type="text" id="name" name="name" class="form-control" placeholder="ชื่อ-สกุล" required>
           <div class="invalid-feedback">
-            กรอกทะเบียนผู้ใช้น้ำ 8 หลัก
+            กรุณากรอกชื่อ-สกุล
           </div>
         </div>
-        
         <div class="col-12">
-          <label for="name">ชื่อ-สกุล<span style="color: #f90202">*</span></label>
-          <input type="text" id="name" name="name" class="form-control" placeholder="กรอกชื่อและนามสกุล" required>
-          <div class="invalid-feedback">
-            กรอกชื่อและนามสกุล
-          </div>
-        </div>
-        
-        <div class="col-12">
-          <label for="phone">เบอร์โทรศัพท์ (10 หลัก)<span style="color: #f90202">*</span></label>
-          <input type="text" id="phone" name="phone" maxlength="10" class="form-control" placeholder="เช่น 0812345678" pattern="0[0-9]{9}"
+          <label for="phone">เบอร์โทร</label>
+          <input type="text" id="phone" name="phone" maxlength="10" class="form-control" placeholder="กรุณากรอกเบอร์โทร"
             required>
           <div class="invalid-feedback">
-            กรอกเบอร์โทรศัพท์ 10 หลัก (ขึ้นต้นด้วย 0)
+            กรุณากรอกเบอร์โทร
           </div>
         </div>
-        
         <div class="col-12">
-          <label for="email">E-mail</label>
-          <input type="text" id="email" name="email" class="form-control" placeholder="example@mail.com" >
+          <label for="device">กำหนดชื่อเข้าใช้งาน (Username)</label>
+          <input type="text" id="device" name="device" class="form-control" placeholder="กรุณากรอก Username" required>
           <div class="invalid-feedback">
-            กรุณาตั้ง email ด้วยครับ
+            กรุณาตั้ง Username ด้วยครับ
           </div>
-        </div>     
-        
-        
+        </div>
+        <div class="col-12">
+          <label for="problem">รหัสผ่าน (Password)</label>
+          <input type="text" id="problem" name="problem" class="form-control"
+            placeholder="ตัวแรกให้ขึ้นต้นด้วยตัวอักษรภาษาอังกฤษ" required>
+          <div class="invalid-feedback">
+            กรุณาตั้งรหัสผ่านด้วยครับ
+          </div>
+        </div>
+
+        <div class="col-12">
+          <label for="place">เวลาโอนเงิน</label>
+          <input type="time" id="place" name="place" class="form-control" required>
+          <!-- <input type="file" id="file" name="file" class="form-control" required> -->
+          <div class="invalid-feedback">
+            กรุณาอัพโหลดสลิปโอนเงิน
+          </div>
+        </div>
+
+        <!-- <div class="col-12">
+          <label for="place">อัพโหลดไฟล์</label>
+<input type="file" name="uploaded_file" id="uploaded_file">
+          <div class="invalid-feedback">
+            กรุณาอัพโหลดสลิปโอนเงิน
+          </div>
+        </div> -->
+
         <div class="col-12 text-center">
-          <button type="submit" class="btn btn-warning w-100"><i class="bi bi-send-fill"></i>&nbsp;ส่งข้อมูลลงทะเบียน</button>
+          <button type="submit" class="btn btn-warning w-100"><i class="bi bi-send-fill"></i>&nbsp;สมัครสมาชิก</button>
         </div>
       </div>
     </form>
@@ -145,7 +157,7 @@
         liffId: '1657790891-40VQpd6O',
         withLoginOnExternalBrowser: true
       })
-      liff.ready.then(() => { 
+      liff.ready.then(() => {
         console.log('liff ready')
       })
     })
@@ -155,10 +167,11 @@
       let data = {
         opt: 'savedata',
         uid: liff.getDecodedIDToken().sub,
-        waterAccount: $('#waterAccount').val(),
         name: $('#name').val(),
         phone: $('#phone').val(),
-        email: $('#email').val(),        
+        device: $('#device').val(),
+        problem: $('#problem').val(),
+        place: $('#place').val(),
       }
 
 
@@ -230,7 +243,7 @@
 
   <br />
   <div class="text-center p-4 col-12 mt-4" style="background-color: rgba(0, 0, 0, 0.05);">
-    © 2025 Copyright | พัฒนาโดย นายวรวุฒิ แผงเพ็ชร์ 
+    © 2023 Copyright | พัฒนาโดยครูสิทธิชาติ สิทธิ
   </div>
 
 </body>

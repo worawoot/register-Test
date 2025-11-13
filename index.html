@@ -89,15 +89,15 @@ async function getUserProfile() {
 async function sendFlexMessage() {
     const flexMessage = {
         type: 'flex',
-        altText: 'ลงทะเบียนเรียบร้อย',
+        altText: 'ส่งข้อมูลลงทะเบียนเรียบร้อย',
         contents: {
             type: 'bubble',
             styles: {
                 header: {
-                    backgroundColor: '#f0f0f0'
+                    backgroundColor: '#00C2F3'
                 },
                 footer: {
-                    backgroundColor: '#f0f0f0'
+                    backgroundColor: '#00C2F3'
                 },
                 body: {
                     backgroundColor: '#ffffff'
@@ -109,10 +109,10 @@ async function sendFlexMessage() {
                 contents: [
                     {
                         type: 'text',
-                        text: 'ข้อมูลลงทะเบียนสำเร็จ',
+                        text: 'ข้อมูลลงทะเบียน MWA e-Bill',
                         weight: 'bold',
                         size: 'lg',
-                        color: '#000000',
+                        color: '#ffffff',
                         align: 'center'
                     }
                 ]
@@ -127,6 +127,50 @@ async function sendFlexMessage() {
                         margin: 'lg',
                         spacing: 'sm',
                         contents: [
+							{
+            					type: 'image',
+            					url: 'https://firebasestorage.googleapis.com/v0/b/webapp-c8c38.appspot.com/o/th-full-white.png?alt=media&token=88a41cdb-27fd-4c98-8d11-a390ef103163',
+            					size: 'xxs',
+            					aspectMode: 'fit',
+            					align: 'start'
+          					},
+          					{
+            					type: 'text',
+            					text: 'สำนักงานประปาสาขาลาดพร้าว',
+            					weight: 'bold',
+            					size: 'sm',
+            					margin: 'md',
+            					position: 'absolute',
+            					offsetStart: '50px',
+            					offsetTop: 'md',
+            					color: '#555555'
+          					}
+        				],
+        					spacing: 'sm'
+      						},
+							
+							{
+                                type: 'box',
+                                layout: 'horizontal',
+                                contents: [
+                                    {
+                                        type: 'text',
+                                        text: 'ทะเบียนผู้ใช้น้ำ',
+                                        size: 'sm',
+                                        color: '#555555',
+                                        flex: 1
+                                    },
+                                    {
+                                        type: 'text',
+                                        text: '12345678',
+                                        size: 'sm',
+                                        color: '#111111',
+                                        align: 'end',
+                                        flex: 2
+                                    }
+                                ],
+								 margin: 'lg'
+                            },
                             {
                                 type: 'box',
                                 layout: 'horizontal',
@@ -146,7 +190,8 @@ async function sendFlexMessage() {
                                         align: 'end',
                                         flex: 2
                                     }
-                                ]
+                                ],
+								 margin: 'sm'
                             },
                             {
                                 type: 'box',
@@ -167,7 +212,8 @@ async function sendFlexMessage() {
                                         align: 'end',
                                         flex: 2
                                     }
-                                ]
+                                ],
+								 margin: 'sm'
                             },
                             {
                                 type: 'box',
@@ -188,7 +234,52 @@ async function sendFlexMessage() {
                                         align: 'end',
                                         flex: 2
                                     }
-                                ]
+                                ],
+								 margin: 'sm'
+                            },
+							{
+                                type: 'box',
+                                layout: 'horizontal',
+                                contents: [
+                                    {
+                                        type: 'text',
+                                        text: 'ใบแจ้งหนี้',
+                                        size: 'sm',
+                                        color: '#555555',
+                                        flex: 1
+                                    },
+                                    {
+                                        type: 'text',
+                                        text: 'ยอมรับ',
+                                        size: 'sm',
+                                        color: '#32CD32',
+                                        align: 'end',
+                                        flex: 2
+                                    }
+                                ],
+								 margin: 'sm'
+                            },
+							{
+                                type: 'box',
+                                layout: 'horizontal',
+                                contents: [
+                                    {
+                                        type: 'text',
+                                        text: 'ใบเสร็จรับเงิน',
+                                        size: 'sm',
+                                        color: '#555555',
+                                        flex: 1
+                                    },
+                                    {
+                                        type: 'text',
+                                        text: 'ยอมรับ',
+                                        size: 'sm',
+                                        color: '#FF0000',
+                                        align: 'end',
+                                        flex: 2
+                                    }
+                                ],
+								 margin: 'sm'
                             }
                         ]
                     }

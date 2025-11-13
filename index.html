@@ -344,7 +344,7 @@ submitBtn.addEventListener('click', async (event) => {
                     liff.closeWindow();
                 }
             });
-            //sendFlexMessage();
+            sendFlexMessage();
             console.log(data);
         } catch (error) {
             Swal.fire({
@@ -372,7 +372,7 @@ async function showConfirmationDialog() {
         confirmButtonText: 'ใช่, ส่งข้อมูล!',
         cancelButtonText: 'ไม่, ยกเลิก'
     });
- 	sendFlexMessage();
+ 	//sendFlexMessage();
     return confirmation.isConfirmed;
 }
 </script>

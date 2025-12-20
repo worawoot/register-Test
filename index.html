@@ -198,9 +198,9 @@ async function getUserProfile() {
 
 // --- Auto-Select Logic ---
 // เมื่อเลือก e-Tax (keynumber5Id) ให้เลือก e-Bill (keynumber4Id) อัตโนมัติ
-keynumber5IdInput.addEventListener('change', function() {
+keynumber4IdInput.addEventListener('change', function() {
     if (this.checked) {
-        keynumber4IdInput.checked = true;
+        keynumber5IdInput.checked = true;
     }
 });
 // -------------------------
@@ -590,14 +590,14 @@ submitBtn.addEventListener('click', async (event) => {
     }
 
     // 2. ตรวจสอบเงื่อนไข Checkbox (Auto-select ทำให้กรณี e-Tax only แทบไม่เกิด แต่เช็คไว้กันพลาด)
-    const isEBillChecked = keynumber4IdInput.checked;
+    const isETaxChecked = keynumber5IdInput.checked;
 
     // เงื่อนไขบังคับ: ต้องเลือก e-Bill เสมอ
-    if (!isEBillChecked) {
+    if (!isETaxChecked) {
         Swal.fire({
             icon: 'warning',
             title: 'กรุณาเลือกบริการ',
-            text: 'กรุณาเลือกสมัครรับใบแจ้งค่าน้ำประปา (e-Bill) เป็นอย่างน้อย',
+            text: 'กรุณาเลือกสมัครรับใบกำกับภาษี (e-Tax) เป็นอย่างน้อย',
         });
         return;
     }    

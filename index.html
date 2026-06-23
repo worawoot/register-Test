@@ -79,8 +79,8 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="keynumber3Id" class="block text-sm font-semibold text-gray-700 mb-2">ทะเบียนผู้ใช้น้ำ <span style="color: #f90202">*</span></label>
-                    <input type="text" class="input-field w-full border border-slate-300 p-2 text-md rounded-lg" id="keynumber3Id" placeholder="กรอกทะเบียนผู้ใช้น้ำ 8 หลัก" name="keynumber3Id" required>
+                    <label for="keynumber3Id" class="block text-sm font-semibold text-gray-700 mb-2">ทะเบียนผู้ใช้น้ำ <span style="color: #f90202">*</span></label>                    
+                    <input type="text" class="input-field w-full border border-slate-300 p-2 text-md rounded-lg" id="keynumber3Id" placeholder="กรอกทะเบียนผู้ใช้น้ำ 10 หลัก" name="keynumber3Id" maxlength="10" inputmode="numeric" pattern="\d{10}" required>
                 </div>
                     
                 <div class="mb-4">
@@ -604,11 +604,11 @@ submitBtn.addEventListener('click', async (event) => {
     }    
 
     const keynumber3Val = keynumber3IdInput.value.trim();
-    if (!/^\d{8}$/.test(keynumber3Val)) {
+    if (!/^\d{10}$/.test(keynumber3Val)) {
         Swal.fire({
             icon: 'warning',
             title: 'ข้อมูลไม่ถูกต้อง',
-            text: 'กรุณากรอกทะเบียนผู้ใช้น้ำเป็นตัวเลข 8 หลักเท่านั้น',
+            text: 'กรุณากรอกทะเบียนผู้ใช้น้ำเป็นตัวเลข 10 หลักเท่านั้น',
         });
         return;
     }
